@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="JIM">
+<!-- Escuta+ · Criado por JIM · © 2026 · Todos os direitos reservados -->
+<title>Escuta+ · Apoiar um amigo</title>
+<style>
+:root{--bg:#fbf7f2;--card:#fff;--ink:#2b2a33;--mute:#6b6877;--acc:#2f7f79;--acc2:#e8f3f1;--warn:#b3402f;--warn2:#fcebe7;--line:#e7e0d6;--g1:#2f7f79;--g2:#e0985a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17191c;--card:#222529;--ink:#eeebe6;--mute:#a4a1ab;--acc:#6fc4bb;--acc2:#1f3331;--warn:#f08d7b;--warn2:#3a2420;--line:#33363b;--g1:#245e59;--g2:#a8683a}}
+:root[data-theme="dark"]{--bg:#17191c;--card:#222529;--ink:#eeebe6;--mute:#a4a1ab;--acc:#6fc4bb;--acc2:#1f3331;--warn:#f08d7b;--warn2:#3a2420;--line:#33363b;--g1:#245e59;--g2:#a8683a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:560px;margin:0 auto;padding:14px 16px 110px}
+.hero{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-radius:22px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.15);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-14px,12px) scale(1.1)}}
+.hero h1{margin:0;font-size:1.5rem}.hero p{margin:.3rem 0 0;opacity:.95}
+.tip{background:rgba(255,255,255,.2);border-radius:14px;padding:10px 12px;margin-top:12px;font-size:.93rem}
+.chips{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.chips span{background:rgba(255,255,255,.22);border-radius:99px;padding:3px 11px;font-size:.82rem}
+h3{margin:1.2rem 0 .5rem;font-size:1.05rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:14px}
+section:not([hidden]){animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.card h2{margin:.2rem 0 .5rem;font-size:1.25rem}
+.step{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--bg);font-weight:700}
+ul{padding-left:1.1rem;margin:.4rem 0}li{margin:.3rem 0}
+.say{background:var(--acc2);border-radius:12px;padding:10px 14px;margin:8px 0}
+.avoid{background:var(--warn2);border-radius:12px;padding:10px 14px;margin:8px 0}
+.row{display:flex;gap:10px;margin-top:14px}
+button,.btn{font:inherit;border:0;border-radius:12px;padding:12px 16px;cursor:pointer;background:var(--acc);color:var(--bg);font-weight:600;flex:1;text-align:center;text-decoration:none;transition:transform .15s}
+button:active{transform:scale(.96)}
+button.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;overflow-x:auto;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{background:none;color:var(--mute);border-radius:0;padding:8px 6px;font-size:.72rem;min-width:62px;line-height:1.2}
+nav button b{display:block;font-size:1.25rem;font-weight:400}
+nav button.on{color:var(--acc);box-shadow:inset 0 3px 0 var(--acc)}
+#sos{position:fixed;right:14px;bottom:calc(78px + env(safe-area-inset-bottom,0px));z-index:6;flex:none;border-radius:99px;background:var(--warn);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.25);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(179,64,47,.15)}}
+.dots{display:flex;gap:6px;justify-content:center;margin:6px 0 14px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s}.dots i.on{background:var(--acc);width:22px;border-radius:6px}
+.urg{border-color:var(--warn)}.urg h2{color:var(--warn)}
+.chk label{display:flex;gap:10px;align-items:flex-start;margin:.5rem 0}
+small{color:var(--mute)}
+details{border-top:1px solid var(--line);padding:10px 0}details:first-of-type{border:0}
+summary{cursor:pointer;font-weight:600}
+input[type=text],textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.seg button{padding:9px 6px;font-size:.85rem;flex:1 1 40%}
+.ct{display:flex;gap:8px;align-items:center;margin:8px 0}.ct input{flex:1}.ct .btn{flex:none;padding:10px 12px;background:var(--warn);color:#fff}
+#orb{width:170px;height:170px;border-radius:50%;margin:26px auto;background:var(--acc2);border:3px solid var(--acc);display:grid;place-items:center;text-align:center;font-weight:600;transition:transform 4s ease-in-out}
+.moods{display:flex;gap:6px}.moods button{background:var(--card);border:1px solid var(--line);font-size:1.7rem;padding:10px 0}
+.hist{display:flex;gap:6px;align-items:flex-end;height:100px;margin-top:14px}
+.hist div{flex:1;text-align:center;font-size:.7rem;color:var(--mute)}.hist span{display:block;background:var(--acc);border-radius:6px 6px 0 0;margin-bottom:2px}
+.opt{display:block;width:100%;margin:6px 0;background:var(--card);color:var(--ink);border:1px solid var(--line);text-align:left;font-weight:500}
+.ok{background:var(--acc2)!important;border-color:var(--acc)!important}.no{background:var(--warn2)!important;border-color:var(--warn)!important}
+.aff{font-size:1.2rem;text-align:center;padding:16px;background:var(--acc2);border-radius:14px;min-height:80px;display:grid;place-items:center}
+.ent{border-left:3px solid var(--acc);padding:2px 10px;margin:8px 0}
+.ic{vertical-align:-.2em;flex:none}nav button b{display:flex;justify-content:center;margin-bottom:2px}.moods button{display:grid;place-items:center}#sos{display:flex;align-items:center;gap:8px}.chips span{display:inline-flex;align-items:center;gap:5px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<div class="hero">
+ <h1 id="hi">Escuta+</h1><p>Ouvir é um acto de cuidado.</p>
+ <div class="tip" id="tip"></div>
+ <div class="chips"><span id="streak"></span><span id="pts"></span></div>
+</div>
+
+<section id="learn">
+ <div class="dots" id="dots"></div>
+ <div class="card" id="slide"></div>
+ <div class="row"><button class="alt" id="prev">Anterior</button><button id="next">Seguinte</button></div>
+ <h3>Sinais a que vale a pena prestar atenção</h3>
+ <div class="card" id="signs"></div>
+ <h3>Hábitos que protegem a saúde mental</h3>
+ <div class="card" id="habits"></div>
+ <h3>Palavras que ajudam a entender</h3>
+ <div class="card" id="gloss"></div>
+</section>
+
+<section id="quiz" hidden>
+ <div class="seg"><button data-q="0">Mito ou verdade</button><button class="alt" data-q="1">Casos práticos</button><button class="alt" data-q="2">Que frase ajuda?</button><button class="alt" data-q="3">Urgente ou não?</button><button class="alt" data-q="4">Sinais</button></div>
+ <div class="card"><small id="qn"></small>
+  <p id="qt" style="font-size:1.1rem"></p><div id="qo"></div>
+  <p id="qe"></p>
+  <div class="row"><button id="qnext" hidden>Seguinte</button></div></div>
+ <div class="card"><h2><i data-i="trophy" data-s="22"></i> Placar</h2><div id="board"></div><div class="row"><button class="alt" id="bclear">Limpar placar</button></div></div>
+</section>
+
+<section id="calm" hidden>
+ <div class="card"><h2>Respirar para acalmar</h2>
+  <p><small>Inspira 4s, segura 4s, expira 6s. Podes fazer sozinho(a) ou com a pessoa que estás a apoiar.</small></p>
+  <div id="orb">Toca em começar</div>
+  <div class="row"><button id="bstart">Começar</button></div></div>
+ <div class="card"><h2>Frase de força</h2><div class="aff" id="aff"></div>
+  <div class="row"><button class="alt" id="anew">Outra frase</button></div></div>
+ <div class="card"><h2>Ancorar no presente (5-4-3-2-1)</h2>
+  <p>Ajuda quando a mente acelera. Diz em voz alta ou mentalmente:</p>
+  <ul><li><b>5</b> coisas que vês</li><li><b>4</b> coisas que podes tocar</li><li><b>3</b> sons que ouves</li><li><b>2</b> cheiros que sentes</li><li><b>1</b> coisa boa sobre ti</li></ul></div>
+ <div class="card"><h2>Mais formas de acalmar</h2><div id="more"></div></div>
+</section>
+
+<section id="mood" hidden>
+ <div class="card"><h2>Como te sentes hoje?</h2>
+  <div class="moods" id="moods"></div>
+  <div class="hist" id="hist"></div>
+  <p><small>Fica guardado só neste dispositivo. Se vires muitos dias maus seguidos, fala com alguém de confiança ou com um profissional.</small></p>
+  <div class="row"><button class="alt" id="mclear">Limpar histórico</button></div></div>
+ <div class="card"><h2>Diário</h2>
+  <p><small>Escreve uma coisa boa de hoje ou o que tens na cabeça.</small></p>
+  <textarea id="jt" rows="3" placeholder="Hoje…"></textarea>
+  <div class="row"><button id="jsave">Guardar</button></div><div id="jl"></div></div>
+</section>
+
+<section id="say" hidden>
+ <div class="card"><h2>O que dizer</h2>
+  <div class="say">“Reparei que andas diferente. Como estás mesmo?”</div>
+  <div class="say">“Estou aqui para te ouvir, sem pressa.”</div>
+  <div class="say">“O que estás a sentir é real e importa.”</div>
+  <div class="say">“Não estás sozinho(a). Podemos ver juntos quem mais te pode ajudar.”</div>
+  <div class="say">“Queres que fique contigo ou preferes um tempo?”</div></div>
+ <div class="card"><h2>O que evitar</h2>
+  <div class="avoid">“Isso passa, não é nada.”</div>
+  <div class="avoid">“Tens de ser forte.”</div>
+  <div class="avoid">“Há pessoas com problemas piores.”</div>
+  <div class="avoid">“Só precisas de pensar positivo.”</div>
+  <div class="avoid">Dar ordens, julgar ou contar o que ele(a) te disse a outras pessoas sem necessidade.</div></div>
+ <div class="card"><h2>Se a pessoa não quiser falar</h2>
+  <ul><li>Não insistas. Diz: “Se mudares de ideias, estou aqui.”</li><li>Continua a incluí-la em conversas e actividades normais.</li><li>Volta a perguntar daqui a uns dias.</li></ul></div>
+ <div class="card"><h2>Conversar com jovens</h2>
+  <ul><li>Escolhe um sítio descontraído, como uma caminhada ou ao ajudar em casa.</li><li>Não reajas com choque ou raiva ao que ouvires.</li><li>Pergunta o que ele(a) precisa, em vez de assumir.</li></ul></div>
+</section>
+
+<section id="urgent" hidden>
+ <div class="card urg"><h2>Situação de urgência</h2>
+  <p>Se a pessoa fala em morrer, em se magoar, ou tem um plano:</p>
+  <ul><li><b>Não a deixes sozinha.</b></li>
+  <li>Pergunta de forma directa e calma: “Estás a pensar em tirar a tua vida?” Perguntar não põe a ideia na cabeça de ninguém.</li>
+  <li>Ouve sem julgar e sem prometer guardar segredo.</li>
+  <li>Afasta objectos perigosos, se for seguro.</li>
+  <li>Chama ajuda imediata, usando os contactos abaixo.</li></ul></div>
+ <div class="card"><h2>Contactos de ajuda</h2>
+  <small>Escreve aqui os números de apoio e de emergência. Ficam guardados só neste dispositivo e o botão “Ligar” aparece quando houver número.</small>
+  <div id="cts"></div></div>
+ <div class="card"><h2>Outros sinais de alerta</h2>
+  <ul><li>Despedidas ou oferta de pertences</li><li>Falar de ser um peso para os outros</li><li>Mudança súbita e brusca de comportamento</li><li>Aumento forte do consumo de álcool ou drogas</li></ul></div>
+</section>
+
+<section id="self" hidden>
+ <div class="card chk"><h2>Cuida de ti também</h2>
+  <p>Apoiar alguém cansa. Marca o que já fizeste hoje (reinicia todos os dias):</p>
+  <label><input type="checkbox" data-k="a"> Descansei ou dormi o suficiente</label>
+  <label><input type="checkbox" data-k="b"> Falei com alguém sobre como me sinto</label>
+  <label><input type="checkbox" data-k="c"> Fiz uma pausa só para mim</label>
+  <label><input type="checkbox" data-k="e"> Comi e bebi água</label>
+  <label><input type="checkbox" data-k="f"> Mexi o corpo (caminhada, dança, alongar)</label>
+  <label><input type="checkbox" data-k="d"> Lembrei-me de que não tenho de resolver tudo sozinho(a)</label>
+  <p id="chkmsg"></p></div>
+ <div class="card"><h2>Limites saudáveis</h2>
+  <ul><li>Tu apoias, não és o terapeuta nem o único apoio.</li><li>Podes dizer: “Preciso de uma pausa, volto a falar contigo mais tarde.”</li><li>Partilha o peso com outras pessoas de confiança.</li></ul></div>
+ <div class="card"><small>Esta app é educativa e não substitui um profissional de saúde. Não faz diagnósticos.</small></div>
+</section>
+</main>
+
+<button id="sos"><i data-i="life" data-s="20"></i> Preciso de ajuda</button>
+<nav>
+ <button data-t="learn" class="on"><b><i data-i="book" data-s="24"></i></b>Aprender</button>
+ <button data-t="quiz"><b><i data-i="target" data-s="24"></i></b>Praticar</button>
+ <button data-t="calm"><b><i data-i="wind" data-s="24"></i></b>Calma</button>
+ <button data-t="mood"><b><i data-i="smile" data-s="24"></i></b>Humor</button>
+ <button data-t="say"><b><i data-i="chat" data-s="24"></i></b>Falar</button>
+ <button data-t="urgent"><b><i data-i="life" data-s="24"></i></b>Urgência</button>
+ <button data-t="self"><b><i data-i="sprout" data-s="24"></i></b>Eu</button>
+</nav>
+
+<script>
+var $=function(x){return document.getElementById(x)};
+function ls(f){try{return f()}catch(e){return null}}
+function get(k,d){var v=ls(function(){return localStorage.getItem(k)});return v===null||v===undefined?d:v}
+function set(k,v){ls(function(){localStorage.setItem(k,v)})}
+function li(a){return"<ul>"+a.map(function(t){return"<li>"+t+"</li>"}).join("")+"</ul>"}
+function acc(a){return a.map(function(g){return"<details><summary>"+g[0]+"</summary><p>"+g[1]+"</p></details>"}).join("")}
+var today=new Date().toISOString().slice(0,10),doy=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/864e5);
+
+/* Ícones */
+var IC={
+book:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+wind:'<path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>',
+smile:'<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/>',
+frown:'<circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><path d="M9 9h.01M15 9h.01"/>',
+sad:'<circle cx="12" cy="12" r="10"/><path d="M15 15.5s-1.2-1-3-1-3 1-3 1"/><path d="M9 9h.01M15 9h.01"/>',
+meh:'<circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><path d="M9 9h.01M15 9h.01"/>',
+laugh:'<circle cx="12" cy="12" r="10"/><path d="M18 13a6 6 0 0 1-6 5 6 6 0 0 1-6-5z"/><path d="M9 9h.01M15 9h.01"/>',
+chat:'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>',
+life:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/>',
+sprout:'<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+moon:'<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>',
+bulb:'<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.3 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/>',
+flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.4 1-3 0 1.4 1 2.5 2.5 2.5z"/>',
+star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+sparkles:'<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/>',
+heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.7V17c0 .6-.5 1-1.1 1.2C7.9 18.7 7 20.2 7 22M14 14.7V17c0 .6.5 1 1.1 1.2 1 .5 1.9 2 1.9 3.8M18 2H6v7a6 6 0 0 0 12 0z"/>',
+award:'<circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/>',
+phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>'};
+function ic(n,z,c){z=z||20;return'<svg class="ic" viewBox="0 0 24 24" width="'+z+'" height="'+z+'" fill="none" stroke="'+(c||"currentColor")+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'}
+document.querySelectorAll("[data-i]").forEach(function(el){el.innerHTML=ic(el.dataset.i,+el.dataset.s||20)});
+
+/* Assinatura */
+var JIM=(function(){
+var P=[67, 114, 105, 97, 100, 111, 32, 112, 111, 114, 32, 74, 73, 77],Q="TUlKIHJvcCBvZGFpckM=",K=-648905336,hd=null,css0="",busy=0,dead=0;
+function H(x){var h=5381;for(var i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;return h}
+function T(){var a=String.fromCharCode.apply(null,P),b="";try{b=atob(Q).split("").reverse().join("")}catch(e){}
+ return H(a)===K?a:(H(b)===K?b:"")}
+function mk(){var t=T();if(!t){kill();return null}
+ var h=document.createElement("div");h.id="jim-sig";h.setAttribute("data-autor","JIM");
+ h.style.cssText="display:block!important;visibility:visible!important;opacity:1!important;position:static!important;height:auto!important;min-height:28px!important;width:auto!important;margin:26px 0 8px!important;padding:0!important;overflow:visible!important;clip:auto!important;transform:none!important;pointer-events:auto!important;font-size:13px!important;text-align:center!important";
+ css0=h.style.cssText;
+ var r=h.attachShadow({mode:"closed"});
+ r.innerHTML='<style>.f{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--mute,#6b6877);font:13px/1.4 system-ui,sans-serif;padding:6px}.f b{color:var(--acc,#2f7f79);letter-spacing:.08em}svg{color:var(--warn,#b3402f)}</style><div class="f">'+ic("heart",14)+'<span>'+t.replace("JIM","")+'<b>JIM</b> &middot; &copy; 2026</span></div>';
+ return h}
+function vis(e){for(;e&&e!==document.documentElement;e=e.parentElement){var c=getComputedStyle(e);if(c.display==="none"||c.visibility==="hidden"||+c.opacity<.6)return false}return true}
+function ok(){if(!hd||!hd.isConnected||hd.style.cssText!==css0)return false;var r=hd.getBoundingClientRect(),m=document.querySelector("main");
+ return !!m&&hd.parentNode===m&&m.lastElementChild===hd&&r.width>60&&r.height>20&&vis(hd)}
+function kill(){if(dead)return;dead=1;document.body.innerHTML='<p style="padding:30px;font:16px system-ui">Esta cópia foi modificada. Usa a versão original da Escuta+ criada por JIM.</p>'}
+function chk(){if(dead||busy)return;busy=1;if(!ok()){if(hd&&hd.parentNode)hd.parentNode.removeChild(hd);hd=mk();var m=document.querySelector("main");if(hd&&m)m.appendChild(hd)}busy=0}
+var q=0;function sch(){if(q)return;q=1;requestAnimationFrame(function(){q=0;chk()})}
+try{new MutationObserver(sch).observe(document.documentElement,{childList:true,subtree:true,attributes:true})}catch(e){}
+setInterval(chk,1200);window.addEventListener("resize",sch);chk();
+return{c:chk,a:T}})();
+/* Cabeçalho */
+var h=new Date().getHours();
+$("hi").innerHTML=(h<12?"Bom dia":h<18?"Boa tarde":"Boa noite")+" "+ic(h<18?"sun":"moon",24);
+var TIPS=["Começa o ano com uma promessa pequena: ouvir mais e julgar menos.", "Pergunta a alguém hoje: “Como estás, mesmo?”", "Um passo pequeno também é progresso.", "Dorme a horas certas e repara no teu humor amanhã.", "Hoje, agradece a alguém que te ouviu.", "Respira fundo três vezes antes de responder a uma conversa difícil.", "Não precisas de resolver o problema de ninguém. Basta estares presente.", "Escreve uma coisa boa que aconteceu hoje.", "Beber água também é cuidar da mente.", "Um telefonema curto pode mudar o dia de alguém.", "Valida antes de aconselhar: “Faz sentido que te sintas assim.”", "Faz uma caminhada de 10 minutos e repara nos sons à volta.", "Não compares a tua dor com a dos outros.", "Hoje, pausa. Sem culpa.", "Pedir ajuda é um acto de coragem.", "Fala com alguém de confiança sobre algo que te pesa.", "Ouvir sem interromper é um presente.", "Descansar não é preguiça, é manutenção.", "Reconhece uma emoção hoje: dá-lhe um nome.", "Se estás cansado(a), diz “preciso de uma pausa”.", "Um abraço, quando a pessoa quer, vale mais do que mil conselhos.", "Sê paciente com quem está a sofrer.", "Evita frases como “isso passa”. Prefere “estou aqui”.", "Escolhe hoje uma coisa que te faz bem e faz.", "A gratidão ajuda, mas sentir tristeza também é permitido.", "Repara em quem anda mais calado(a) ultimamente.", "Envia uma mensagem a um amigo que não vês há muito.", "Dá a ti mesmo(a) o carinho que darias a um amigo.", "Hoje não tens de ser perfeito(a).", "Respeita os limites dos outros e os teus.", "Uma boa conversa começa com uma boa pergunta.", "Sentir-se ouvido(a) já alivia.", "Faz algo simples só por prazer: música, dança, bola, arte.", "Não precisas de saber tudo. Podes dizer “não sei, mas vamos descobrir”.", "Hoje repara na tua respiração por um minuto.", "Quem pede ajuda já está a cuidar de si.", "Pergunta “o que precisas de mim agora?” em vez de assumir.", "Sair ao ar livre faz bem à cabeça.", "A calma é contagiosa. Usa-a.", "Escreve três coisas que correram bem esta semana.", "Reconhece o esforço de alguém hoje.", "Uma pausa de ecrãs pode acalmar a mente.", "A tristeza não dura para sempre.", "Aceita ajuda quando ela é oferecida.", "Hoje, pergunta e ouve a resposta até ao fim.", "Cuida do teu sono: ele cuida do teu humor.", "Fala devagar com quem está nervoso(a).", "Nem todos os dias são de força. Alguns são de descanso.", "Lembra-te de comer a horas.", "Diz a alguém: “importas-me”.", "Escuta o que está por trás das palavras.", "Não tentes “consertar” a pessoa. Acompanha-a.", "Hoje, dá-te permissão para sentir.", "Procura alguém com quem rir um pouco.", "Ouve com os olhos: repara na linguagem do corpo.", "Pequenos gestos criam grandes laços.", "Pede desculpa quando errares e aceita desculpas.", "Cuidar de quem cuida também é importante.", "Hoje, não respondas à pressa a uma mensagem difícil.", "Os sentimentos são como ondas: sobem e descem.", "Cumprimenta alguém com atenção verdadeira.", "Quando alguém desabafa, agradece pela confiança.", "Faz alongamentos suaves e solta os ombros.", "Hoje, escolhe falar bem de ti.", "Repara no que ainda funciona bem na tua vida.", "Lembra-te: pedir ajuda não é fraqueza.", "Visita ou liga a uma pessoa mais velha.", "Planeia algo agradável para o fim de semana.", "Evita julgar. Tenta compreender.", "Anota o que te preocupa e escolhe um passo para dar.", "O silêncio partilhado também apoia.", "Hoje, ouve uma música que te acalme.", "Uma refeição partilhada aproxima.", "Reconhece o que já superaste.", "Pergunta a um amigo como correu o dia e espera a resposta.", "Escolhe palavras gentis, mesmo quando discordas.", "Descansa a mente antes de dormir: sem notícias e sem ecrãs.", "Pessoas com saúde mental frágil merecem respeito, não pena.", "Hoje, faz uma coisa de que te orgulhes.", "Valorizar os pequenos progressos mantém a esperança.", "Convida alguém para uma caminhada.", "Fala de sentimentos como falas de saúde: com naturalidade.", "A tua presença faz diferença.", "Não tens de carregar tudo sozinho(a).", "Hoje, diz “obrigado(a)” a alguém.", "Tira cinco minutos para ti, sem tarefas.", "Se uma conversa é difícil, faz uma pausa e volta mais tarde.", "Hoje, perdoa-te por algo pequeno.", "Observa como te sentes antes de começares o dia.", "A ansiedade baixa quando respiras devagar.", "Hoje, evita comparar-te nas redes sociais.", "Convida alguém a falar, sem pressão.", "O luto tem o seu tempo. Respeita-o.", "Ouve histórias de quem é mais velho(a). Há sabedoria nelas.", "Procura rodear-te de pessoas que te fazem bem.", "Não guardes só para ti o que te pesa.", "Faz uma lista do que depende de ti e do que não depende.", "Um sorriso sincero ajuda, mas ninguém é obrigado a sorrir.", "Hoje, pratica dizer “não” com gentileza.", "Dá espaço ao silêncio quando alguém precisa pensar.", "Evita dar conselhos que ninguém pediu.", "Pergunta: “Queres que eu ouça ou que te ajude a pensar em soluções?”", "Escolhe um gesto de cuidado para ti hoje.", "Hoje, tenta dormir sem o telemóvel por perto.", "Recomeçar também é coragem.", "Se te sentes sobrecarregado(a), divide as tarefas em passos pequenos.", "Fala a alguém de confiança se os maus dias se repetem.", "Ouvir ajuda mais do que falar.", "Hoje, reconhece o teu cansaço sem te criticar.", "Mostra interesse real pelas pessoas à tua volta.", "Dá um passeio e repara em três coisas bonitas.", "Diz algo gentil a quem trabalha contigo.", "Não esperes estar pronto(a) para pedir ajuda.", "Sente os pés no chão e respira três vezes.", "Escrever pode aliviar a mente.", "Conversa com alguém que te faz rir.", "Quando alguém chora, fica por perto.", "Pausa e pergunta-te: “Do que preciso agora?”", "Hoje, apoia alguém sem esperar nada em troca.", "O descanso é parte do caminho.", "Os limites protegem as relações.", "Fala baixo e devagar quando alguém está em crise.", "Não prometas segredo se a vida da pessoa estiver em risco.", "Cuida da tua alimentação: o corpo influencia a mente.", "Uma conversa honesta vale mais do que dez mensagens vagas.", "Procura ajuda profissional quando os sentimentos pesarem demais.", "Hoje, faz algo pelos outros e repara em como te sentes.", "Pergunta como está a família de quem apoias.", "Ser vulnerável é ser humano.", "Repara no que te dá energia e no que a tira.", "Respeita o ritmo de cada pessoa.", "Hoje, ouve sem olhar para o telemóvel.", "Uma pausa a meio do dia renova a energia.", "Um elogio sincero pode abrir o dia a alguém.", "A saúde mental também precisa de rotina.", "Hoje, toma uma decisão pequena que te traga alívio.", "Recorda uma vez em que superaste algo difícil.", "Não tenhas vergonha de procurar um profissional.", "Reconhece sinais de cansaço extremo antes que se acumulem.", "A comunidade cuida quando todos se importam.", "Hoje, diz a alguém que gostas dele(a).", "Fala com respeito, mesmo quando estás irritado(a).", "Aprende uma técnica de respiração e usa-a esta semana.", "Tira um tempo para rezar, meditar ou ficar em silêncio, se isso te faz bem.", "Quando duvidares de ti, lembra-te do que já conseguiste.", "Dar atenção é dar valor.", "Hoje, convida alguém para conversar com calma.", "Acredita quando alguém diz que está mal.", "Procura sol e ar fresco por alguns minutos.", "Uma rotina simples traz estabilidade.", "Pede um abraço quando precisares.", "Diz: “Estou preocupado(a) contigo porque…” e explica o que reparaste.", "Hoje, abranda. Nem tudo é urgente.", "Reconhece que também tens direito a pedir apoio.", "Escolhe a gentileza, mesmo quando é difícil.", "Faz uma pequena lista de pessoas a quem podes recorrer.", "Ouve a pessoa até ao fim, mesmo que já imagines o que vai dizer.", "Anota um objectivo pequeno para amanhã.", "Hoje, repara no que está a correr bem.", "Evita rótulos como “maluco” ou “fraco”. Palavras ferem.", "Aprende a reconhecer sinais de ansiedade em ti.", "Pergunta a um jovem: “O que te anda a preocupar?”", "Mostra que os sentimentos dele(a) são aceites.", "Faz uma pausa antes de reagir com raiva.", "Procura música, humor ou jogo para aliviar a tensão.", "Ouve sem pressa. A pressa fecha portas.", "A saúde mental é para todos, todos os dias.", "Hoje, dá um passo para cuidar de uma relação importante.", "Se algo te perturba há semanas, vale a pena falar sobre isso.", "Descobre o que te acalma e guarda-o como recurso.", "Fala com respeito sobre quem sofre com problemas emocionais.", "Hoje, tira alguns minutos para o silêncio.", "Lembra-te: um mau momento não é uma má vida.", "Agradece a quem te ajudou numa fase difícil.", "Hoje, não te cobres tanto.", "Dá espaço a quem precisa estar sozinho(a), mas não desapareças.", "Observa mudanças de sono e apetite em quem amas.", "Procura uma actividade que te faça perder a noção do tempo.", "Quem apoia também pode precisar de apoio.", "Hoje, ouve uma crítica sem te atacares.", "Respeita a decisão da pessoa de falar quando estiver pronta.", "O teu corpo também sente o que a mente guarda: cuida dele.", "Procura alguém para partilhar uma refeição hoje.", "Os pequenos hábitos fazem grandes mudanças.", "Faz uma pausa para sorrir, mesmo sem motivo.", "Hoje, escolhe uma conversa que importa e não adies.", "Se não sabes o que dizer, diz: “Estou aqui”.", "Reconhece que o apoio vem de muitos lados: família, amigos, comunidade, profissionais.", "Planeia uma pausa a meio da semana.", "Hoje, tenta ver as coisas pelo ponto de vista do outro.", "Aceitar um limite é também uma forma de cuidado.", "Pergunta a um colega como está e fica para ouvir.", "Cria um pequeno ritual que te acalme ao fim do dia.", "A esperança constrói-se com pequenos passos.", "Hoje, pensa numa pessoa que te inspira e diz-lho.", "Cuida do ambiente onde vives: um espaço arrumado acalma.", "Ajuda alguém a procurar apoio sem decidir por ela.", "Hoje, escolhe uma palavra que te ajude: calma, força, paz.", "Evita o isolamento: procura companhia.", "Reconhece quando precisas de pedir ajuda profissional.", "Fala de saúde mental em casa sem tabu.", "Hoje, abranda o passo e repara à tua volta.", "Ouve com empatia: “Isso parece muito difícil”.", "Faz um gesto de paz com alguém com quem tiveste atrito.", "Se estás a lutar, não estás a falhar.", "Dá tempo ao tempo, mas não ao silêncio sozinho(a) demasiado longo.", "Mostra a alguém que ele(a) tem valor.", "Hoje, escreve uma carta que não precisas de enviar.", "O cuidado começa pela escuta.", "Hoje, lembra a alguém que não está sozinho(a).", "Aprende o nome da tua emoção para a conseguires gerir.", "Evita decidir grandes coisas quando estás exausto(a).", "Pausa para um chá ou um café, sem pressa.", "Quem tem apoio recupera melhor.", "Hoje, pratica uma respiração lenta de 4-4-6.", "Convida um amigo(a) para uma actividade tranquila.", "Ouve uma criança com atenção: ela também sente.", "Dá a uma criança palavras para falar das emoções.", "Pergunta a um adolescente como foi o dia e deixa-o falar.", "Hoje, observa como falas contigo mesmo(a).", "Troca uma crítica interna por uma frase gentil.", "Faz uma coisa de cada vez, hoje.", "Lembra-te de que é normal ter dias difíceis.", "Pessoas fortes também pedem ajuda.", "Hoje, escolhe o descanso sem culpa.", "Reconhece uma pessoa que te apoia e diz-lhe obrigado.", "Quando a mente acelera, usa o 5-4-3-2-1.", "Pausa o julgamento. Ouve primeiro.", "Hoje, oferece um ouvido atento.", "Se vires alguém sozinho(a), aproxima-te.", "Marca um momento de silêncio para ti.", "Procura uma conversa honesta com quem confias.", "Hoje, dá valor a uma pequena vitória.", "Se te sentes perdido(a), fala. Não precisas de ter tudo claro.", "Mantém contacto com quem vive sozinho(a).", "Os teus sentimentos não são um problema, são informação.", "Hoje, estabelece um pequeno limite saudável.", "Fica atento(a) a mudanças bruscas de humor em quem amas.", "Respeita o luto de cada um.", "Dá o primeiro passo, mesmo que seja só um “olá”.", "Diz “estou contigo” e fica.", "Hoje, diminui a pressão sobre ti.", "Celebra o simples: uma refeição, um sol, uma conversa.", "Pede ajuda cedo, antes que o peso aumente.", "Faz algo bom pelo teu corpo hoje.", "Reconhece a coragem de quem fala sobre o que sente.", "Hoje, ouve alguém que nunca ouves.", "Planeia o dia com tempo para pausas.", "Lembra-te de que cuidar da mente é cuidar da vida.", "Ouve sem tentar responder logo.", "Observa o que te faz sentir em paz e protege isso.", "Hoje, ajuda alguém a sentir-se visto(a).", "Fala com respeito de ti, também em pensamento.", "Mantém uma lista de contactos de apoio no telemóvel.", "Hoje, estende a mão a alguém que está em baixo.", "Toma banho calmo e demora-te, só por ti.", "Evita guardar mágoas: fala quando puderes.", "Reconhece que sentir medo é humano.", "Cuida do teu espaço de descanso.", "Quando alguém desabafa, não minimizes.", "Hoje, estabelece um horário para desligar do trabalho.", "Aprende a reconhecer o teu limite antes de chegares ao esgotamento.", "Hoje, dá atenção a quem costuma passar despercebido.", "Se te sentes sozinho(a), procura uma comunidade.", "Faz uma pausa para te alongares.", "Apoia com presença, não com pressa.", "Reconhece o teu esforço, mesmo que ninguém o veja.", "Hoje, escolhe ouvir em vez de ter razão.", "Falar de sentimentos aproxima as pessoas.", "Se um dia correr mal, recomeça amanhã.", "Hoje, cuida de alguém e deixa-te cuidar.", "Escreve o que gostarias de ouvir e diz isso a ti mesmo(a).", "Fica atento(a) a sinais de alerta e age cedo.", "Pergunta directamente quando estiveres preocupado(a) com a segurança de alguém.", "A esperança também se partilha.", "Hoje, enfrenta uma coisa pequena que adiaste.", "Aprecia a música, o riso, a conversa: são medicina.", "Procura equilíbrio entre trabalho, descanso e afectos.", "Hoje, escuta alguém sem tentar mudar a sua opinião.", "Cuida dos teus vizinhos: um olá pode ser muito.", "Convida alguém a sair um pouco de casa.", "Respeita o ritmo de recuperação de cada pessoa.", "Hoje, escolhe pensamentos mais gentis sobre ti.", "Lembra-te: não tens de estar bem para mereceres apoio.", "Dá espaço à tristeza sem te perderes nela.", "Cria o hábito de perguntar “como estás?” duas vezes.", "Hoje, agradece pelo que ainda funciona em ti.", "Marca uma consulta ou conversa se o desconforto persistir.", "Hoje, escolhe a paciência.", "Ajuda a normalizar o pedido de ajuda à tua volta.", "Se vires alguém em perigo imediato, chama ajuda urgente.", "Faz uma caminhada com um amigo(a).", "Recorda a quem sofre: há saída e há apoio.", "Hoje, tenta não resolver, só estar.", "Reconhece a importância do descanso nas festas e no trabalho.", "Valoriza o apoio da família e da comunidade.", "Dá um pequeno gesto de bondade a um desconhecido.", "Hoje, respira antes de reagir.", "Pessoas ouvidas sentem-se seguras.", "Fala sobre os teus limites a quem precisa de os saber.", "Termina o dia a lembrar uma coisa boa.", "Quando estiveres em dúvida, pergunta com carinho.", "Hoje, reserva um momento para ti, mesmo que curto.", "Anima alguém com palavras sinceras.", "Respira fundo e recomeça.", "A bondade começa por dentro.", "Se estás exausto(a), procura apoio.", "Hoje, planeia como cuidarás de ti esta semana.", "Fecha o ano a agradecer a quem esteve contigo.", "Reconhece o caminho que fizeste este ano.", "Deixa para trás o que pesa e leva contigo o que ajuda.", "Prepara o novo ano com gentileza, não com pressão.", "Mais um dia, mais uma oportunidade de cuidar.", "Ouve, apoia, recomeça.", "Último dia do ano: respira, agradece e segue em frente com esperança.", "Hoje, repara em quem está a ajudar os outros e pergunta-lhe como está.", "Uma pergunta aberta convida a conversar: “O que tens sentido?”", "Evita dizer “calma” a quem está aflito. Diz “estou contigo”.", "Aprende com cada conversa: o que ajudou e o que não ajudou?", "Hoje, escolhe uma tarefa e faz só essa, com calma.", "Os dias nublados também passam.", "Faz uma lista de pessoas que te transmitem segurança.", "Hoje, não tens de decidir tudo.", "Prefere o diálogo ao silêncio quando algo te incomoda.", "Lembra-te: falar de suicídio com cuidado não põe a ideia na cabeça de ninguém.", "Hoje, procura uma actividade em grupo que te faça bem.", "Quando te sentires em baixo, avisa alguém de confiança.", "Um pequeno agradecimento fortalece laços.", "Hoje, desafia um pensamento duro sobre ti.", "Pratica dizer o que sentes com frases simples: “sinto-me…”.", "Respeita quem escolhe procurar ajuda profissional.", "Um espaço calmo em casa ajuda a descansar a mente.", "Hoje, dá uma pausa às preocupações por dez minutos.", "Quem vive com ansiedade precisa de paciência, não de pressão.", "Ouve as preocupações de uma criança sem as desvalorizar.", "Hoje, pensa em algo que esperas com alegria.", "Se estás de luto, permite-te chorar, recordar e descansar.", "Procura apoio quando uma perda parecer insuportável.", "Fala sobre dinheiro e stress com alguém de confiança. Partilhar alivia.", "Hoje, evita o excesso de notícias tristes.", "Aprende uma técnica de relaxamento muscular.", "Hoje, cumprimenta quem anda sozinho(a).", "Alguns dias, o melhor que podes fazer é descansar. E é suficiente.", "Reconhece os sinais do teu corpo quando estás sob stress.", "Faz uma refeição devagar, sem distrações.", "Hoje, escolhe ser gentil com quem te cansa.", "O apoio funciona melhor quando é contínuo.", "Hoje, planeia um encontro com alguém querido.", "Pede feedback com carinho e recebe-o com abertura.", "Mostra aos jovens que é normal sentir ansiedade antes de grandes momentos.", "Ensina às crianças a respirar fundo quando se zangam.", "Hoje, diz a um(a) amigo(a): “podes contar comigo”.", "Ouve com paciência quem repete a mesma história.", "Valoriza o descanso da mente tanto como o do corpo.", "Hoje, escolhe um som que te acalma e ouve-o.", "Escreve uma frase de força e coloca-a onde a possas ver.", "Ajuda a quebrar o estigma: fala de saúde mental sem vergonha.", "Hoje, procura uma pessoa de confiança para uma conversa franca.", "Se tens uma preocupação, nomeia-a. Dar nome reduz o medo.", "Hoje, não deixes que a vergonha te cale.", "Cuida de ti como cuidas de quem amas.", "Lembra-te: pedir ajuda cedo é mais fácil do que pedir tarde.", "Hoje, sê um(a) amigo(a) que ouve.", "Ajuda um colega a sentir-se parte do grupo.", "Dá abrigo a quem precisa de falar, sem pressa e sem julgamento.", "Hoje, olha para ti com compaixão.", "Nenhuma emoção é “errada”. Aprende com ela.", "Reconhece a importância das pessoas que te apoiam em silêncio.", "Hoje, faz algo que te traga paz.", "Se a pessoa te disser que está bem mas parece triste, volta a perguntar com carinho.", "Fala com alguém antes de o peso ficar grande demais.", "Mantém viva a esperança: ela cresce com apoio."];
+var ti=(doy-1)%TIPS.length;
+function showTip(){$("tip").innerHTML=ic("bulb",18)+" "+TIPS[ti]+"  ›"}showTip();$("tip").style.cursor="pointer";$("tip").title="Toca para ver outra frase";$("tip").onclick=function(){ti=(ti+1)%TIPS.length;showTip()};
+var last=get("lastDay",""),st=+get("streak",0);
+if(last!=today){var y=new Date(Date.now()-864e5).toISOString().slice(0,10);st=last==y?st+1:1;set("streak",st);set("lastDay",today)}
+$("streak").innerHTML=ic("flame",16)+" "+st+(st==1?" dia":" dias");
+function pts(n){var p=+get("pts",0)+(n||0);if(n)set("pts",p);$("pts").innerHTML=ic("star",16)+" "+p+" pontos"}pts(0);
+
+/* Aprender */
+var S=[
+["1","Repara","Mudanças no sono, apetite, humor ou isolamento? Tristeza que não passa, irritação constante ou falta de esperança são sinais importantes.",["Escolhe um momento calmo e privado","Fala de comportamentos que viste, sem rotular"]],
+["2","Aproxima-te","Começa com cuidado e sem pressão. A pessoa pode não querer falar logo, e tudo bem.",["“Tenho pensado em ti. Queres conversar?”","Respeita o ritmo e o silêncio"]],
+["3","Ouve","Ouvir é a parte mais poderosa. Não precisas de ter respostas nem de resolver o problema.",["Olha, acena, não interrompas","Repete o que entendeste: “Parece que te sentes sobrecarregado(a)”"]],
+["4","Valida","Mostra que percebes que é difícil, mesmo que não concordes com tudo.",["“Faz sentido que te sintas assim.”","Evita minimizar ou comparar"]],
+["5","Apoia e encaminha","Ajuda a pessoa a dar o próximo passo, sem decidir por ela.",["Sugere falar com um profissional de saúde, líder comunitário ou familiar de confiança","Oferece-te para ir junto"]],
+["6","Pergunta pela segurança","Se houver sinais de perigo, pergunta de forma directa e procura ajuda urgente (separador Urgência).",["Não deixes a pessoa sozinha","Não guardes este segredo"]],
+["7","Continua presente","Volta a perguntar como está nos dias seguintes. A continuidade mostra que a pessoa importa.",["Uma mensagem simples já ajuda","Cuida também de ti (separador Eu)"]]];
+var i=0;
+function draw(){var s=S[i];
+ $("slide").innerHTML='<span class="step">'+s[0]+'</span><h2>'+s[1]+'</h2><p>'+s[2]+'</p>'+li(s[3]);
+ $("dots").innerHTML=S.map(function(_,k){return'<i class="'+(k==i?"on":"")+'"></i>'}).join("");
+ $("prev").style.opacity=i==0?.4:1;$("next").textContent=i==S.length-1?"Recomeçar":"Seguinte"}
+$("prev").onclick=function(){if(i>0){i--;draw()}};
+$("next").onclick=function(){if(i==S.length-1){i=0;pts(5)}else i++;draw()};
+$("signs").innerHTML=acc([
+["Depressão","Tristeza ou vazio durante semanas, perda de interesse no que antes dava gosto, cansaço, alterações de sono e apetite, sentimentos de culpa ou inutilidade."],
+["Ansiedade","Preocupação intensa e difícil de controlar, coração acelerado, falta de ar, tensão, evitar situações por medo, dificuldade em dormir."],
+["Luto e trauma","Tristeza profunda após uma perda, pesadelos, sobressaltos, evitar lembranças, sentir-se entorpecido(a) ou em alerta constante."],
+["Consumo de álcool ou drogas","Beber ou consumir para lidar com emoções, perder o controlo, faltar a compromissos, afastar-se de família e amigos."],
+["Crianças e adolescentes","Queda nas notas, mudanças bruscas de humor, isolamento dos amigos, queixas físicas frequentes, comportamentos de risco."],
+["Stress do dia a dia","Dores de cabeça, irritação, esquecimentos e cansaço depois de muita pressão (trabalho, estudos, dinheiro, família)."]])+"<small>Estes sinais não são um diagnóstico. Só um profissional pode avaliar.</small>";
+$("habits").innerHTML=acc([
+["Sono","Dormir horas regulares ajuda o humor e a concentração. Evita ecrãs na última hora antes de deitar."],
+["Movimento","Caminhar, dançar ou jogar à bola liberta tensão e melhora o ânimo."],
+["Ligação","Manter contacto com família, amigos e comunidade reduz a solidão."],
+["Alimentação e água","Comer a horas e beber água ajuda o corpo e a mente."],
+["Pausas e prazer","Reserva tempo para algo que gostas: música, conversa, oração, arte, futebol."],
+["Pedir ajuda cedo","Falar com alguém quando as dificuldades começam torna tudo mais leve."]]);
+$("gloss").innerHTML=acc([
+["Saúde mental","Bem-estar emocional, psicológico e social. Afecta como pensamos, sentimos e agimos."],
+["Primeiros socorros em saúde mental","Apoio inicial dado a alguém em sofrimento, até chegar ajuda profissional ou até a crise passar."],
+["Escuta activa","Ouvir com atenção total, sem interromper nem julgar."],
+["Validação","Reconhecer que o que a pessoa sente é compreensível."],
+["Estigma","Preconceito ou vergonha ligados a quem tem dificuldades de saúde mental."],
+["Resiliência","Capacidade de enfrentar dificuldades e recuperar, normalmente com apoio dos outros."]]);
+
+/* Praticar */
+var MV=["Verdade","Mito"];
+var Q=[[
+["Perguntar a alguém se pensa em suicídio põe a ideia na sua cabeça.",["Verdade","Mito"],1,"Mito. Perguntar com cuidado pode ser um alívio e abre espaço para pedir ajuda."],
+["Ouvir sem julgar já é uma forma real de ajuda.",MV,0,"Verdade. Sentir-se ouvido(a) reduz o isolamento e a vergonha."],
+["Problemas de saúde mental são sinal de fraqueza.",MV,1,"Mito. Podem afectar qualquer pessoa e têm tratamento e apoio."],
+["Quem fala em se magoar só quer chamar a atenção.",MV,1,"Mito. Leva sempre a sério e procura ajuda."],
+["Com apoio e tratamento, muitas pessoas melhoram.",MV,0,"Verdade. A recuperação é possível e o apoio cedo faz diferença."],
+["Preciso de ser especialista para apoiar um amigo.",MV,1,"Mito. Presença, escuta e encaminhamento já fazem muita diferença."],
+["Devo prometer guardar segredo se a pessoa estiver em perigo.",MV,1,"Mito. A segurança vem primeiro. Explica com carinho que precisas de chamar ajuda."],
+["Os jovens também podem ter depressão e ansiedade.",MV,0,"Verdade. Acontece em qualquer idade, por isso vale a pena estar atento(a)."],
+["Chorar é sempre mau sinal.",MV,1,"Mito. Chorar pode ser uma forma saudável de aliviar emoções."],
+["Falar dos problemas só piora tudo.",MV,1,"Mito. Falar com alguém de confiança costuma aliviar o peso."],
+["A saúde mental depende só da força de vontade.",MV,1,"Mito. Há muitos factores envolvidos e o apoio faz diferença."],
+["Quem tem problemas de saúde mental é sempre perigoso.",MV,1,"Mito. A maioria não é violenta e muitas vezes são elas que sofrem com o preconceito."],
+["Dormir mal durante muito tempo pode afectar o humor.",MV,0,"Verdade. O sono e a saúde mental estão muito ligados."],
+["Quem tem depressão consegue animar-se se quiser.",MV,1,"Mito. A depressão não é falta de vontade, precisa de compreensão e apoio."],
+["O apoio da família e da comunidade ajuda na recuperação.",MV,0,"Verdade. A ligação com os outros protege a saúde mental."],
+["Se alguém sorri, está sempre bem.",MV,1,"Mito. Há pessoas que escondem o sofrimento atrás de um sorriso."],
+["Notar os sinais cedo pode evitar que a situação piore.",MV,0,"Verdade. Quanto mais cedo houver apoio, melhor."],
+["Reagir com calma ajuda a pessoa a sentir-se segura.",MV,0,"Verdade. A tua calma passa segurança."],
+["Só quem passou por uma grande tragédia tem problemas de saúde mental.",MV,1,"Mito. Podem surgir por muitas razões, inclusive sem um acontecimento marcante."],
+["Fazer exercício regularmente pode melhorar o humor.",MV,0,"Verdade. Mexer o corpo ajuda a reduzir tensão e a melhorar o ânimo."],
+["Os homens não devem falar das emoções.",MV,1,"Mito. Todas as pessoas sentem e todas merecem apoio."],
+["Beber álcool resolve a ansiedade.",MV,1,"Mito. Pode dar alívio curto, mas costuma piorar o problema depois."],
+["Escuta activa significa dar muitos conselhos.",MV,1,"Mito. Escuta activa é ouvir com atenção e validar, não resolver à pressa."],
+["As crianças não sentem stress nem tristeza profunda.",MV,1,"Mito. As crianças também sofrem e precisam de adultos que as ouçam."],
+["Pedir ajuda profissional mostra que a pessoa quer cuidar de si.",MV,0,"Verdade. É um passo corajoso e responsável."],
+["A saúde mental e a saúde física estão ligadas.",MV,0,"Verdade. Uma influencia a outra."],
+["Se a pessoa melhora um dia, o problema acabou.",MV,1,"Mito. A recuperação tem altos e baixos e pede continuidade."],
+["Dar apoio significa viver todos os problemas da outra pessoa.",MV,1,"Mito. Apoias sem carregar tudo. Tens limites e outros apoios existem."],
+["Mudanças bruscas de comportamento podem ser um sinal de alerta.",MV,0,"Verdade. Vale a pena conversar com cuidado."],
+["É melhor evitar o assunto para não incomodar.",MV,1,"Mito. Mostrar interesse com respeito costuma ajudar."],
+["Dormir bem, comer bem e ter rotina ajudam o bem-estar.",MV,0,"Verdade. São bases importantes da saúde mental."],
+["Todos os problemas emocionais se resolvem sozinhos com o tempo.",MV,1,"Mito. Alguns melhoram, mas muitos precisam de apoio e acompanhamento."]],[
+["Um amigo anda isolado há semanas e responde pouco. O que fazes?",["“Deixa de ser dramático.”","“Notei que andas afastado. Estou aqui se quiseres conversar.”","Ignoras, ele vai ficar bem sozinho."],1,"Mostrar cuidado, sem julgar e deixando a porta aberta, é o melhor caminho."],
+["Um colega diz: “às vezes penso que seria melhor não estar aqui.” O que fazes?",["Mudas de assunto para não o deixar pior.","Perguntas directamente, com calma, se pensa em tirar a vida, ficas com ele e ajudas a procurar apoio.","Prometes guardar segredo total."],1,"Perguntar directamente e não o deixar sozinho é o mais seguro. Segredo total pode pôr a vida em risco."],
+["Uma familiar chora meses depois de uma perda. O que fazes?",["“Já passou tempo demais.”","Sentas-te ao lado, ouves e dizes que podes ficar o tempo que ela precisar.","Levas a uma festa para distrair."],1,"O luto não tem prazo. Presença e escuta ajudam mais do que pressa."],
+["Um amigo começa a beber muito e falta ao trabalho. O que fazes?",["Contas a toda a gente.","Falas em privado sobre o que reparaste, com carinho, e sugeres procurar ajuda.","Esperas que ele perceba sozinho."],1,"Uma conversa privada, sem culpa, é o melhor primeiro passo."],
+["Uma adolescente diz que não vai à escola porque se sente sempre ansiosa. O que fazes?",["“Isso é só preguiça.”","Ouves, validas o que sente e envolves um adulto de confiança ou profissional.","Obrigas e pronto."],1,"Validar e procurar apoio ajuda a perceber o que está por trás da ansiedade."],
+["Um amigo diz que não quer falar do que se passa. O que fazes?",["Insistes até ele contar tudo.","Dizes: “Se mudares de ideias, estou aqui” e continuas por perto.","Afastas-te de vez."],1,"Respeitar o ritmo sem desaparecer mostra que podes contar contigo."],
+["Uma mãe exausta diz que já não aguenta cuidar sozinha dos filhos. O que fazes?",["“Todas as mães passam por isso.”","Ouves, reconheces o cansaço e ajudas a pensar em quem a pode apoiar.","Dizes que é ingratidão."],1,"Reconhecer o esforço e procurar ajuda concreta alivia a sobrecarga."],
+["Um colega faz piadas sobre si mesmo, mas parece triste. O que fazes?",["Ris e passas à frente.","Falas em privado: “Reparei que andas em baixo. Está tudo bem?”","Comentas com os outros colegas."],1,"Uma conversa privada e cuidada pode abrir espaço para ele se abrir."],
+["Um jovem esteve numa situação de violência e fica calado. O que fazes?",["Pedes todos os detalhes.","Dizes que acreditas nele(a), que não é culpa dele(a), e ajudas a procurar apoio seguro.","Dizes que deve esquecer isso."],1,"Acreditar, não culpar e procurar apoio seguro é essencial. Não é preciso saber todos os detalhes."],
+["Estás cansado(a) de apoiar alguém e sentes-te esgotado(a). O que fazes?",["Continuas sem parar, até não aguentares.","Defines limites, descansas e partilhas o apoio com outras pessoas.","Desapareces sem explicar."],1,"Cuidar de ti permite continuar a apoiar sem te esgotares."],
+["Um familiar diz coisas que não fazem sentido e parece com muito medo. O que fazes?",["Ris e dizes que é loucura.","Manténs a calma, não discutes, ouves e procuras ajuda de profissional de saúde.","Gritas para ele(a) acalmar."],1,"Calma, respeito e ajuda profissional são o caminho. Discutir ou troçar piora o medo."],
+["Um amigo perdeu o emprego e diz que é um fracasso. O que fazes?",["“Podia ser pior.”","“Deve ser muito duro. Queres desabafar?” e ouves.","“Arranja outro e pronto.”"],1,"Reconhecer a dor e ouvir ajuda mais do que minimizar."],
+["Um estudante treme e diz que não consegue respirar antes de um exame. O que fazes?",["Dizes que é exagero.","Ajudas a respirar devagar, falas com voz calma e ficas por perto.","Deixas a pessoa sozinha."],1,"Respiração lenta e presença calma ajudam a baixar o pânico."],
+["Uma vizinha idosa vive sozinha e parece triste. O que fazes?",["Evitas para não incomodar.","Visitas, conversas e vês quem da família ou da comunidade a pode apoiar.","Dizes que é da idade."],1,"A companhia e a ligação à comunidade protegem a saúde mental."],
+["Um colega regressa ao trabalho depois de uma licença por depressão. O que fazes?",["Comentas com todos.","Recebes com normalidade e carinho, sem pressionar nem expor.","Evitas falar com ele(a)."],1,"Respeito e normalidade ajudam a reintegração."],
+["Um amigo diz “já não vale a pena” depois de uma separação. O que fazes?",["“Há mais peixes no mar.”","Perguntas com calma se pensa em fazer mal a si próprio e ficas com ele(a).","Mudas de assunto."],1,"Perguntar directamente e não o deixar sozinho(a) é mais seguro do que fugir do assunto."],
+["Uma criança de 8 anos chora e não quer ir à escola. O que fazes?",["Obrigas sem perguntar nada.","Ouves com calma, perguntas o que a preocupa e falas com a escola ou um profissional se for preciso.","Ris do medo dela."],1,"Ouvir a criança e envolver quem a pode ajudar é essencial."],
+["Alguém tem uma crise de pânico à tua frente. O que fazes?",["Dizes que está a exagerar.","Manténs-te calmo(a), falas devagar, ajudas a respirar e ficas até passar.","Chamas a atenção de toda a gente."],1,"Calma e presença ajudam a pessoa a sentir-se segura."]
+],[
+["Um amigo perdeu o emprego e está desanimado. Qual frase ajuda mais?",["“Podia ser pior.”","“Deve ser muito duro. Queres falar sobre isso?”","“Arranja outro, deixa de te queixar.”"],1,"Reconhecer a dificuldade abre a conversa."],
+["Alguém diz que está cansado de tudo. Qual frase ajuda mais?",["“Estou aqui contigo. Conta-me mais.”","“Isso é parvoíce.”","“Pensa noutra coisa.”"],0,"Mostrar presença e curiosidade ajuda a pessoa a continuar a falar."],
+["Uma pessoa está a chorar. Qual frase ajuda mais?",["“Para de chorar.”","“Podes chorar, eu fico aqui.”","“Chorar não resolve nada.”"],1,"Dar espaço às emoções alivia."],
+["Alguém pede desculpa por estar a desabafar. Qual frase ajuda mais?",["“Não precisas de pedir desculpa. Obrigado(a) por confiares em mim.”","“Pois, estás a exagerar.”","“Já chega, vamos mudar de assunto.”"],0,"Agradecer a confiança reforça a ligação."],
+["Queres sugerir ajuda profissional. Qual frase ajuda mais?",["“Tens de ir ao médico, já!”","“Se quiseres, posso ir contigo falar com alguém que te possa ajudar.”","“Isso resolve-se sozinho.”"],1,"Oferecer acompanhamento torna o passo mais fácil."],
+["Depois de uma conversa difícil, qual frase ajuda mais?",["“Obrigado(a) por me contares. Podemos falar quando quiseres.”","“Não contes isto a ninguém, é vergonhoso.”","“Já te disse para esqueceres.”"],0,"Agradecer e deixar a porta aberta dá segurança."],
+["Uma pessoa está muito ansiosa. Qual frase ajuda mais?",["“Não há razão para estares assim.”","“Vamos respirar juntos um pouco.”","“Os outros estão pior.”"],1,"Fazer algo calmante em conjunto ajuda a baixar a tensão."],
+["Alguém perdeu um ente querido. Qual frase ajuda mais?",["“Ele está num lugar melhor, não chores.”","“Sinto muito pela tua perda. Estou aqui.”","“Tens de seguir em frente.”"],1,"Presença e empatia ajudam mais do que pressa."],
+["Não sabes o que dizer. Qual frase ajuda mais?",["“Não sei bem o que dizer, mas estou aqui contigo.”","“Nem sei porque me contaste.”","“Isso não é comigo.”"],0,"Ser honesto(a) e presente já conforta."],
+["Alguém tem vergonha de pedir ajuda. Qual frase ajuda mais?",["“Pedir ajuda é de fracos.”","“Muita gente precisa de ajuda, e pedir é coragem.”","“Aguenta mais um pouco.”"],1,"Reduzir a vergonha facilita o pedido de apoio."],
+["Alguém tem pensamentos muito negativos. Qual frase ajuda mais?",["“Pensa só em coisas boas.”","“Isso parece pesado. Queres contar-me mais?”","“Isso é tudo na tua cabeça.”"],1,"Convidar a falar é melhor do que minimizar."],
+["Alguém diz que não tem ninguém. Qual frase ajuda mais?",["“Tens a mim e podemos ver quem mais te pode apoiar.”","“Tens de te esforçar mais.”","“Todos têm alguém, o problema és tu.”"],0,"Oferecer presença e procurar mais apoio reduz o isolamento."]
+],[
+["Alguém diz que vai acabar com a vida e tem um plano.",["Pedir ajuda urgente agora e não deixar sozinho(a)","Conversar com cuidado e acompanhar nos próximos dias","Ignorar"],0,"É uma situação de risco imediato. Não deixes a pessoa sozinha e chama ajuda urgente."],
+["Alguém está cansado(a) depois de uma semana de exames.",["Pedir ajuda urgente agora","Conversar com cuidado, sugerir descanso e acompanhar","Ignorar"],1,"Cansaço depois de pressão é comum. Descanso e conversa ajudam, e acompanha se continuar."],
+["Alguém está a oferecer pertences e a despedir-se de todos.",["Pedir ajuda urgente agora e não deixar sozinho(a)","Conversar com cuidado e acompanhar nos próximos dias","Ignorar"],0,"Despedidas e ofertas de pertences são sinais de alerta sérios."],
+["Alguém está triste há duas semanas desde a morte de um familiar.",["Pedir ajuda urgente agora","Conversar com cuidado, ouvir e acompanhar","Ignorar"],1,"O luto é natural. Ouve, acompanha e procura apoio se piorar ou se houver sinais de perigo."],
+["Alguém diz que seria melhor não existir e está sozinho(a) em casa.",["Pedir ajuda urgente agora e não deixar sozinho(a)","Conversar com cuidado e acompanhar nos próximos dias","Ignorar"],0,"Pergunta directamente pela segurança, fica por perto e procura ajuda urgente."],
+["Alguém anda mais calado(a) e dorme pouco há uns dias.",["Pedir ajuda urgente agora","Conversar com cuidado, perguntar como está e acompanhar","Ignorar"],1,"Mudanças assim merecem atenção e conversa, antes que se agravem."],
+["Alguém tem à mão algo com que se pode magoar e diz que vai fazê-lo.",["Pedir ajuda urgente agora e não deixar sozinho(a)","Conversar com cuidado e acompanhar nos próximos dias","Ignorar"],0,"Risco imediato. Mantém a calma, afasta o perigo se for seguro e chama ajuda de imediato."],
+["Alguém teve um mau dia no trabalho e está irritado(a).",["Pedir ajuda urgente agora","Ouvir, dar espaço e ver como está nos próximos dias","Ignorar"],1,"Um mau dia é comum. Ouvir e acompanhar chega, a não ser que haja outros sinais."]
+],[
+["Qual é um sinal comum de ansiedade?",["Coração acelerado e preocupação difícil de controlar","Vontade de cantar","Fome enorme"],0,"Preocupação intensa, tensão e coração acelerado são sinais comuns. Não é um diagnóstico."],
+["Qual é um sinal comum de depressão?",["Perder o interesse no que antes dava gosto, durante semanas","Ter muita energia e vontade de tudo","Estar apenas com sono num dia"],0,"Tristeza ou perda de interesse que dura semanas merece atenção e apoio."],
+["Qual destes pode indicar stress prolongado?",["Dores de cabeça, irritação e esquecimentos","Dormir bem e rir muito","Sentir-se leve ao falar com amigos"],0,"O stress pode afectar o corpo, o humor e a memória."],
+["Qual é um sinal possível depois de um acontecimento traumático?",["Pesadelos e sobressaltos frequentes","Alegria depois de uma festa","Gosto por viajar"],0,"Pesadelos, sustos e evitar lembranças podem surgir após trauma. Vale a pena procurar apoio."],
+["Qual destes pode indicar que um adolescente precisa de apoio?",["Queda nas notas e afastamento dos amigos","Gostar de jogar à bola","Comer bem"],0,"Mudanças marcadas e prolongadas merecem uma conversa cuidadosa."],
+["Quando a tristeza merece mais atenção?",["Quando dura semanas e atrapalha o dia a dia","Quando dura uma noite após uma discussão","Quando há cansaço depois de uma caminhada"],0,"A duração e o impacto na vida diária são pistas importantes."],
+["Qual é um sinal de uma crise de pânico?",["Falta de ar, tremores e medo intenso de repente","Sono tranquilo","Riso fácil"],0,"Uma crise de pânico costuma ser súbita e muito assustadora, mas passa. Ajuda respirar devagar."],
+["Qual é um sinal de consumo problemático de álcool ou drogas?",["Consumir para lidar com emoções e faltar a compromissos","Beber água ao longo do dia","Tomar chá à noite"],0,"Usar substâncias para fugir das emoções e perder o controlo são sinais de alerta."],
+["Quando é bom procurar ajuda profissional?",["Quando os sintomas duram semanas e atrapalham a vida","Só quando já não houver solução","Nunca é preciso"],0,"Procurar ajuda cedo costuma tornar a recuperação mais fácil."],
+["Qual é um sinal possível de depressão no corpo?",["Dormir demais ou de menos e mudanças no apetite","Ler um livro","Fazer exercício"],0,"Sono e apetite alterados são sinais frequentes."],
+["Qual destas reacções é normal no luto?",["Tristeza, saudade e choro depois de uma perda","Nunca sentir nada durante anos","Ter de voltar ao normal em uma semana"],0,"O luto é natural e tem tempos diferentes. Procura apoio se for muito pesado."],
+["Qual é um sinal de alerta urgente?",["Falar em morrer ou em se magoar","Pedir um copo de água","Dizer que está com sono"],0,"Falar em morrer ou se magoar exige atenção imediata. Vê o separador Urgência."],
+["Qual destes pode ser um sinal de sofrimento numa criança pequena?",["Voltar a fazer xixi na cama, chorar muito e ter medo de ir à escola","Brincar com os amigos","Pedir um lanche"],0,"Mudanças de comportamento e medos novos podem mostrar que a criança precisa de apoio."],
+["Uma criança queixa-se muitas vezes de dor de barriga ou de cabeça sem causa clara. O que pode estar por trás?",["Às vezes, ansiedade ou preocupação","Sempre preguiça","Nunca tem relação com as emoções"],0,"O corpo também fala das emoções. Convém ouvir a criança e consultar um profissional se continuar."],
+["Qual destes pode ser um sinal de depressão num idoso?",["Isolamento, perda de apetite e desinteresse por tudo","Gostar de conversar com os vizinhos","Passear ao fim da tarde"],0,"Nos idosos a depressão também existe e é muitas vezes confundida com “coisas da idade”."],
+["Um idoso diz muitas vezes que é um peso para a família. O que fazes?",["Dizes que isso é mania","Ouves com carinho, dizes que ele(a) importa e avisas alguém de confiança","Ris e mudas de assunto"],1,"Sentir-se um peso é um sinal importante. Ouvir e envolver outras pessoas de apoio ajuda."],
+["Alguém passa muitas horas nas redes sociais, dorme pouco e anda irritado(a). O que pode estar a acontecer?",["O uso excessivo pode afectar o sono e o humor","Nada, é sempre normal","Só acontece a crianças"],0,"Muito tempo online pode afectar sono, humor e concentração. Ajuda combinar pausas."],
+["Um adolescente é gozado online e fica calado. O que ajuda mais?",["Dizer que ignore tudo","Ouvir, acreditar, não culpar e procurar apoio com um adulto de confiança","Tirar-lhe o telemóvel sem perguntar nada"],1,"Escuta e apoio importam mais do que castigos. Pergunta o que ele(a) precisa."],
+["Qual destes é um sinal possível de burnout (esgotamento)?",["Cansaço extremo, cinismo e sentir que já nada vale a pena no trabalho","Sentir-se satisfeito(a) com o trabalho","Ter vontade de aprender"],0,"O esgotamento surge depois de muito stress sem descanso. Pausas e apoio ajudam."],
+["Depois de ter um bebé, uma mãe chora muito e sente-se sem esperança há semanas. O que fazes?",["Dizes que é normal e para ela se animar","Ouves, dizes que ela não está sozinha e ajudas a procurar apoio de saúde","Evitas falar"],1,"Tristeza forte depois do parto pode precisar de ajuda profissional. Apoio e escuta contam muito."],
+["Qual é um sinal de que alguém pode estar a esconder o sofrimento?",["Diz que está bem, mas está cansado(a), afastado(a) e já não faz o que gostava","Participa em tudo com alegria","Pede ajuda com facilidade"],0,"Nem sempre o sofrimento é visível. Voltar a perguntar com carinho pode abrir portas."],
+["Qual destas mudanças merece atenção num amigo?",["Largar de repente actividades de que gostava e afastar-se de todos","Mudar de penteado","Gostar de uma nova música"],0,"Afastamento e perda de interesse repentinos merecem uma conversa cuidadosa."]
+]];
+var qm=0,qi=0,qa=false,qs=[0,0,0,0,0],D=[[],[],[],[],[]],P=[[],[],[],[],[]];
+function shuf(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=a[k];a[k]=a[j];a[j]=t}return a}
+function deal(m){if(P[m].length<6){var left=P[m];P[m]=left.concat(shuf(Q[m]).filter(function(x){return left.indexOf(x)<0}))}D[m]=P[m].splice(0,6);qi=0;qs[m]=0}
+function qdraw(){var q=D[qm][qi],n=D[qm].length;qa=false;$("qn").textContent=["Pergunta ","Caso ","Frase ","Situação ","Sinal "][qm]+(qi+1)+" de "+n+" · certas: "+qs[qm];
+ $("qt").textContent=q[0];$("qe").textContent="";$("qnext").hidden=true;$("qo").innerHTML="";
+ shuf(q[1].map(function(t,k){return[t,k==q[2]]})).forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o[0];b.onclick=function(){if(qa)return;qa=true;var r=o[1];b.classList.add(r?"ok":"no");
+  if(r){qs[qm]++;pts(10)}if(qi==n-1)rec(qm,n);$("qe").innerHTML=(r?ic("sparkles",18)+" Certo! ":"Quase. ")+q[3]+(qi==n-1?" · Resultado final: "+qs[qm]+" de "+n+".":"");$("qnext").hidden=false;$("qnext").textContent=qi==n-1?"Nova ronda":"Seguinte"};$("qo").appendChild(b)})}
+$("qnext").onclick=function(){if(qi==D[qm].length-1)deal(qm);else qi++;qdraw()};
+document.querySelectorAll("[data-q]").forEach(function(b){b.onclick=function(){qm=+b.dataset.q;deal(qm);document.querySelectorAll("[data-q]").forEach(function(x){x.classList.toggle("alt",x!=b)});qdraw()}});deal(0);deal(1);deal(2);deal(3);deal(4);qdraw();
+
+var BN=["Mito ou verdade","Casos práticos","Que frase ajuda?","Urgente ou não?","Sinais"];
+function getB(){try{return JSON.parse(get("board","{}"))}catch(e){return{}}}
+function rec(m,n){var b=getB(),x=b[m]||{best:0,rounds:0,right:0,total:0};x.rounds++;x.right+=qs[m];x.total+=n;if(qs[m]>x.best)x.best=qs[m];b[m]=x;set("board",JSON.stringify(b));if(qs[m]==n)pts(20);bdraw()}
+function bdraw(){var b=getB(),r=0;$("board").innerHTML=BN.map(function(nm,m){var x=b[m];r+=x?x.rounds:0;return"<div class=\"ent\"><b>"+nm+"</b><br><small>"+(x?"Melhor: "+x.best+" de 6"+(x.best==6?" "+ic("trophy",16):"")+" · Rondas: "+x.rounds+" · Acertos: "+Math.round(100*x.right/x.total)+"%":"Ainda sem rondas")+"</small></div>"}).join("")+"<small>Rondas completas: "+r+(r>=10?" "+ic("award",16):"")+"</small>"}
+$("bclear").onclick=function(){ls(function(){localStorage.removeItem("board")});bdraw()};bdraw();
+
+/* Calma */
+var bt=null,on=false;
+function phase(n){var o=$("orb"),p=[["Inspira…",4,1.3],["Segura…",4,1.3],["Expira…",6,1]][n];
+ o.textContent=p[0];o.style.transitionDuration=(n==1?0:p[1])+"s";o.style.transform="scale("+p[2]+")";
+ bt=setTimeout(function(){if(on)phase((n+1)%3)},p[1]*1000)}
+$("bstart").onclick=function(){on=!on;clearTimeout(bt);$("bstart").textContent=on?"Parar":"Começar";
+ if(on){phase(0);pts(2)}else{$("orb").textContent="Toca em começar";$("orb").style.transform="scale(1)"}};
+var A=["Não tens de passar por isto sozinho(a).", "Um passo pequeno também é progresso.", "Os teus sentimentos são válidos.", "Pedir ajuda é força.", "Hoje basta fazeres o que consegues.", "Respira. Este momento vai passar.", "Importas, mesmo nos dias difíceis.", "Descansar também é cuidar.", "Não precisas de ser perfeito(a) para mereceres amor.", "Tu és mais forte do que pensas.", "Um dia de cada vez já é suficiente.", "Está tudo bem em não estar bem.", "Mereces ser ouvido(a).", "As emoções difíceis também passam.", "Falar sobre o que sentes é um acto de coragem.", "Não és um peso para ninguém.", "O teu valor não depende da tua produtividade.", "Podes recomeçar quantas vezes precisares.", "Cuidar de ti não é egoísmo.", "Há pessoas que se importam contigo.", "Mesmo devagar, estás a avançar.", "Hoje podes ser gentil contigo.", "Não tens de ter todas as respostas.", "Pedir apoio mostra sabedoria.", "Os maus dias não definem a tua vida.", "A tua história ainda não acabou.", "Tens o direito de descansar.", "Chorar pode ser alívio, não fraqueza.", "O que sentes importa.", "Sobreviver a um dia difícil já é uma vitória.", "Tu fazes a diferença para alguém.", "Podes confiar em quem te quer bem.", "Não estás sozinho(a) nesta caminhada.", "Respeita o teu ritmo.", "Tu não és os teus pensamentos mais duros.", "Cada respiração é um novo começo.", "Não tens de carregar tudo sozinho(a).", "Aceitar ajuda é uma forma de força.", "A esperança pode voltar, mesmo que hoje pareça longe.", "Tu mereces paz.", "Está tudo bem em dizer “não” quando precisas.", "Falar com alguém pode aliviar o peso.", "Tu és suficiente, tal como és.", "Os teus limites merecem respeito.", "Podes ter dias lentos e continuar a ser valioso(a).", "A melhora acontece em pequenos passos.", "Não te compares com os outros.", "Hoje escolhe uma coisa pequena que te faça bem.", "A tua dor é real e merece cuidado.", "Não precisas de justificar o teu cansaço.", "Tens coragem, mesmo quando não a sentes.", "O apoio dos outros não te torna menos capaz.", "Também mereces ser cuidado(a).", "Quando tudo pesa, pede uma mão.", "Um erro não te define.", "Tu já superaste dias difíceis antes.", "A tua voz importa.", "Podes mudar de ideias e tentar de novo.", "Há sempre alguém a quem podes recorrer.", "Tens permissão para sentir.", "Fazer uma pausa também é avançar.", "Cuida do teu corpo, ele cuida de ti.", "Bebe água, respira fundo, recomeça.", "Nem tudo depende de ti.", "Dá-te o mesmo carinho que darias a um amigo.", "Os sentimentos vêm e vão como as ondas.", "Tu és importante para a tua família e comunidade.", "O teu bem-estar vale a pena.", "Podes pedir abraços, conversa ou silêncio.", "Ser vulnerável é ser humano.", "Tens direito a ajuda profissional sem vergonha.", "Um sorriso hoje não obriga a estares bem amanhã.", "Mereces tempo para sarar.", "Não precisas de fingir que estás bem.", "A tua presença faz falta.", "Escolher viver um dia mais já é muito.", "Podes falar mesmo que a voz trema.", "Há força em contar a verdade sobre como te sentes.", "O descanso faz parte do caminho.", "Confia no processo, mesmo quando é lento.", "Não estás a falhar, estás a aprender.", "Todos precisamos de apoio, e está tudo bem.", "A tua vida tem valor.", "Hoje já fizeste o suficiente.", "Respira, solta os ombros, tu consegues.", "A tristeza não dura para sempre.", "Há luz mesmo depois de noites longas.", "Tens o direito de pedir tempo.", "Tu consegues pedir ajuda hoje.", "Sê paciente contigo.", "Não tens de ser forte sempre.", "Algumas conversas salvam dias.", "És mais do que o teu pior momento.", "Podes celebrar até as pequenas conquistas.", "A gratidão ajuda, mas sentir dor também é permitido.", "Ouvir-te é o primeiro passo para cuidares de ti.", "Escolhe pessoas que te fazem bem.", "Tu mereces relações seguras e respeitosas.", "Não deixes que a vergonha te cale.", "Quem pede ajuda já está a cuidar de si.", "Não há problema em precisar dos outros.", "Cada dia traz uma nova oportunidade.", "A tua dor não tira o teu valor.", "Fala, mesmo que seja só uma frase.", "Tu não és culpado(a) de tudo o que acontece.", "Também podes ser o teu próprio abrigo.", "Um abraço, uma mensagem, um chá: pequenos gestos curam.", "Podes aprender a ser feliz outra vez, ao teu tempo.", "Estás aqui, e isso conta.", "O teu sofrimento merece ser levado a sério.", "A coragem às vezes é só levantar-te e tentar de novo.", "Fica perto de quem te faz bem.", "Tu tens direito a dias leves.", "Os teus sonhos ainda cabem em ti.", "Hoje, sê o teu melhor amigo(a).", "Pedir ajuda abre portas.", "A esperança é uma escolha que se repete todos os dias."];
+var deck=[],lastA="";
+function aff(){if(!deck.length){deck=shuf(A);if(deck[deck.length-1]==lastA&&deck.length>1)deck.unshift(deck.pop())}lastA=deck.pop();$("aff").textContent=lastA}aff();$("anew").onclick=aff;
+$("more").innerHTML=acc([
+["Relaxar os ombros","Levanta os ombros até às orelhas, segura 5 segundos e solta devagar. Repete 3 vezes."],
+["Escrever o que pesa","Escreve tudo o que te preocupa durante 5 minutos. Depois decide uma coisa pequena para fazer hoje."],
+["Sair para o ar livre","Caminha 10 minutos, de preferência com alguém. Repara no céu, nas árvores, nos sons."],
+["Falar com alguém","Liga ou visita alguém de confiança, mesmo que seja só para conversar sobre coisas simples."]]);
+
+/* Humor e diário */
+var EN=["frown","sad","meh","smile","laugh"],EC=["#c0503f","#d98a3d","#8d8d99","#4f9d8f","#2f7f79"];function mi(k,z){return ic(EN[k],z,EC[k])}
+function getH(){try{return JSON.parse(get("mood","[]"))}catch(e){return[]}}
+function mdraw(){var a=getH().slice(-7);
+ $("hist").innerHTML=a.map(function(x){return'<div><span style="height:'+(x.m+1)*14+'px"></span>'+mi(x.m,20)+'<br>'+x.d+'</div>'}).join("")||"<small>Ainda sem registos.</small>"}
+$("moods").innerHTML=EN.map(function(e,k){return'<button data-m="'+k+'" aria-label="'+e+'">'+mi(k,32)+'</button>'}).join("");
+document.querySelectorAll("[data-m]").forEach(function(b){b.onclick=function(){var a=getH(),d=new Date().toLocaleDateString("pt-PT",{day:"2-digit",month:"2-digit"});
+ a=a.filter(function(x){return x.d!=d});a.push({d:d,m:+b.dataset.m});set("mood",JSON.stringify(a.slice(-30)));mdraw();pts(3)}});
+$("mclear").onclick=function(){ls(function(){localStorage.removeItem("mood")});mdraw()};mdraw();
+function getJ(){try{return JSON.parse(get("jr","[]"))}catch(e){return[]}}
+function jdraw(){$("jl").innerHTML="";getJ().slice(-5).reverse().forEach(function(x){var d=document.createElement("div");d.className="ent";d.innerHTML="<small>"+x.d+"</small><br>";d.appendChild(document.createTextNode(x.t));$("jl").appendChild(d)})}
+$("jsave").onclick=function(){var t=$("jt").value.trim();if(!t)return;var a=getJ();a.push({d:new Date().toLocaleDateString("pt-PT"),t:t});set("jr",JSON.stringify(a.slice(-30)));$("jt").value="";jdraw();pts(3)};jdraw();
+
+/* Contactos */
+var CL=["Linha de apoio em saúde mental","Emergência","Unidade de saúde mais próxima","Familiar ou amigo de confiança"];
+CL.forEach(function(l,k){var d=document.createElement("div");d.className="ct";var n=document.createElement("input");n.type="text";n.placeholder=l+" (número)";n.inputMode="tel";n.value=get("ct"+k,"");
+ var a=document.createElement("a");a.className="btn";a.innerHTML=ic("phone",16)+" Ligar";function up(){var v=n.value.replace(/[^0-9+]/g,"");a.hidden=!v;a.href="tel:"+v}
+ n.oninput=function(){set("ct"+k,n.value);up()};up();var w=document.createElement("div");w.style.cssText="margin:12px 0 0";var s=document.createElement("small");s.textContent=l;w.appendChild(s);$("cts").appendChild(w);d.appendChild(n);d.appendChild(a);$("cts").appendChild(d)});
+
+/* Eu */
+var cd=get("chkDay","");if(cd!=today){["a","b","c","d","e","f"].forEach(function(k){set("chk_"+k,"0")});set("chkDay",today)}
+function cm(){var n=document.querySelectorAll("[data-k]:checked").length;$("chkmsg").innerHTML=n==6?ic("star",18)+" Dia completo. Estás a cuidar bem de ti!":n?"Boa! "+n+" de 6.":""}
+document.querySelectorAll("[data-k]").forEach(function(c){var k="chk_"+c.dataset.k;c.checked=get(k,"0")=="1";c.onchange=function(){set(k,c.checked?"1":"0");cm();if(c.checked)pts(2)}});cm();
+
+/* Navegação */
+var T=["learn","quiz","calm","mood","say","urgent","self"];
+function go(t){JIM.c();document.querySelectorAll("nav button").forEach(function(x){x.classList.toggle("on",x.dataset.t==t)});
+ T.forEach(function(k){$(k).hidden=k!=t});window.scrollTo(0,0)}
+document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){go(b.dataset.t)}});
+$("sos").onclick=function(){go("urgent")};
+draw();
+</script>
+</body>
+</html>
