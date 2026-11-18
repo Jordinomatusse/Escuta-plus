@@ -59,6 +59,13 @@ input[type=text],textarea{width:100%;padding:10px;border-radius:10px;border:1px 
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+
+<meta name="theme-color" content="#2f7f79">
+<meta name="description" content="Escuta+ — aprender a ouvir, acolher e apoiar um amigo.">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+
 </head>
 <body>
 <main>
@@ -444,5 +451,16 @@ document.querySelectorAll("nav button").forEach(function(b){b.onclick=function()
 $("sos").onclick=function(){go("urgent")};
 draw();
 </script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch((error) => {
+      console.error("Não foi possível activar o modo offline:", error);
+    });
+  });
+}
+</script>
+
 </body>
 </html>
