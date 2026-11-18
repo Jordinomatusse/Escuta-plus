@@ -1,0 +1,5 @@
+PACOTE ESCUTA+ PWA SEM PASTAS
+
+Envie os seis ficheiros directamente para a raiz do repositório GitHub: index.html, manifest.json, service-worker.js, icon-192.png, icon-512.png e LEIA-ME.txt. Não precisa enviar nenhuma pasta.
+
+No GitHub: Add file > Upload files > seleccione os seis ficheiros > Commit changes. Depois Settings > Pages > Deploy from a branch > main > /(root) > Save.
